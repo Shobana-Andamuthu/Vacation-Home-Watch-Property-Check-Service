@@ -334,22 +334,73 @@
           }
         });
 
-        // Close sidebar on mobile after selection
-        const sidebar = document.querySelector('.dashboard-sidebar');
-        if (sidebar && window.innerWidth <= 1024) {
-          sidebar.classList.remove('open');
+        // Close sidebar on mobile/tablet after selection
+        if (window.innerWidth < 1024) {
+          closeSidebar();
         }
       });
     });
 
-    // Mobile sidebar toggle
+    // Mobile/Tablet sidebar toggle and backdrop
     const toggleBtn = document.getElementById('dashboard-sidebar-toggle');
     const sidebar = document.querySelector('.dashboard-sidebar');
+    const backdrop = document.getElementById('dashboard-sidebar-backdrop');
+
+    function openSidebar() {
+      if (sidebar) sidebar.classList.add('open');
+      if (backdrop) backdrop.classList.add('open');
+      if (toggleBtn) {
+        toggleBtn.classList.add('is-active');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        toggleBtn.setAttribute('aria-label', 'Close navigation sidebar');
+      }
+      if (window.innerWidth < 1024) {
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeSidebar() {
+      if (sidebar) sidebar.classList.remove('open');
+      if (backdrop) backdrop.classList.remove('open');
+      if (toggleBtn) {
+        toggleBtn.classList.remove('is-active');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.setAttribute('aria-label', 'Open navigation sidebar');
+      }
+      document.body.style.overflow = '';
+    }
+
     if (toggleBtn && sidebar) {
-      toggleBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
+      toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (sidebar.classList.contains('open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
       });
     }
+
+    const drawerCloseBtn = document.getElementById('sidebar-drawer-close');
+    if (drawerCloseBtn) {
+      drawerCloseBtn.addEventListener('click', closeSidebar);
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeSidebar);
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+        closeSidebar();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && sidebar && sidebar.classList.contains('open')) {
+        closeSidebar();
+      }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', () => {

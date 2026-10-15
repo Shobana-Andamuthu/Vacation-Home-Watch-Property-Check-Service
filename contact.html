@@ -170,69 +170,91 @@
        ========================================================================= -->
   <main id="main-content">
 
-    <!-- SECTION 1: Page Introduction -->
-    <section class="section section-surface" id="contact-intro">
+    <!-- SECTION 1: Concierge Dispatch Hub (Standardized Subpage Hero Layout) -->
+    <section class="section subpage-hero-section" id="contact-intro">
       <div class="container">
-        <div class="split-layout">
-          <div>
-            <span class="eyebrow">Direct Property Care Concierge</span>
-            <h1 style="margin-block-end: 1rem;">Get in Touch with Our Property Team</h1>
-            <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.6; margin-block-end: 2rem;">
-              Whether you need weekly checks during your seasonal travels or wish to configure a customized property observation plan, our property directors are ready to assist.
+        <div class="subpage-hero-grid">
+          <!-- Left Column: Copy & Concierge Director Profile -->
+          <div class="subpage-hero-copy">
+            <span class="eyebrow">Dedicated Property Concierge</span>
+            <h1>Get in Touch with Our Property Team</h1>
+            <p>
+              Whether you need regular scheduled checks during seasonal travels or wish to configure a customized estate observation plan, our senior property directors are ready to assist.
             </p>
-            <div class="btn-group">
-              <a href="#enquiry-form-section" class="btn btn-primary">Start Property Intake</a>
-              <a href="tel:+18005554663" class="btn btn-secondary">Call: (800) 555-HOME</a>
+            <div style="display: flex; align-items: center; gap: 1rem; margin-block-end: 1.25rem;">
+              <img src="assets/images/contact-concierge.jpg" alt="HavenGuard property care director" style="width: 54px; height: 54px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-forest); flex-shrink: 0;" loading="eager">
+              <div>
+                <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem;">Senior Intake Coordinator</div>
+                <div style="font-size: 0.82rem; color: var(--color-forest); font-weight: 600;">Available Mon–Sun 7:00 AM – 8:00 PM EST</div>
+              </div>
+            </div>
+            <!-- Quick Action Links -->
+            <div class="btn-group" style="margin: 0;">
+              <a href="tel:+18005554663" class="btn btn-primary btn-sm">Direct Phone Call</a>
+              <a href="#enquiry-form-section" class="btn btn-secondary btn-sm">Start Onboarding</a>
             </div>
           </div>
-          <div class="split-img-wrapper">
-            <img src="assets/images/contact-concierge.jpg" alt="HavenGuard dedicated property care concierge director ready for client consultation" loading="eager" style="border-radius: var(--radius-lg); width: 100%; object-fit: cover; aspect-ratio: 4/3; box-shadow: var(--card-shadow);">
+
+          <!-- Right Column: Standardized Visual Height Dispatch Channels Card -->
+          <div class="dispatch-channels-card" style="min-height: auto; height: auto; justify-content: center; box-shadow: var(--card-shadow); border-radius: var(--radius-xl);">
+            <!-- Channel 1: Telephone -->
+            <a href="tel:+18005554663" class="dispatch-item" style="text-decoration: none; color: inherit;">
+              <div class="dispatch-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="dispatch-item-meta">
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Direct Line</div>
+                <div class="dispatch-phone-val">+1 (800) 555-HOME</div>
+              </div>
+              <span class="status-pill-pass" style="background-color: #2E7D32 !important; color: #FFFFFF !important; font-weight: 800; padding: 0.2rem 0.65rem;">Live</span>
+            </a>
+
+            <!-- Channel 2: Email -->
+            <a href="mailto:care@homewatchservice.com" class="dispatch-item" style="text-decoration: none; color: inherit;">
+              <div class="dispatch-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="dispatch-item-meta">
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Intake Email</div>
+                <div class="dispatch-email-val">care@homewatchservice.com</div>
+              </div>
+              <span style="font-size: 0.8rem; color: var(--text-secondary);">&lt; 2h Reply</span>
+            </a>
+
+            <!-- Channel 3: Service Region -->
+            <div class="dispatch-item">
+              <div class="dispatch-icon-box" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div class="dispatch-item-meta">
+                <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Patrol Zones</div>
+                <div style="font-weight: 700; color: var(--text-primary); font-size: 0.92rem;">Coastal Enclaves &amp; Resort Communities</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2: Contact and Enquiry Information (Verified/Realistic Business Details) -->
-    <section class="section section-muted" id="business-details">
+    <!-- SECTION 2: Coverage Guarantee Banner -->
+    <section class="section section-muted" id="business-details" style="padding-block: 2.5rem;">
       <div class="container">
-        <div class="cards-grid-3">
-          <div class="card">
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">📞</div>
-              <h3 class="card-title">Telephone Dispatch</h3>
-              <p class="card-text">
-                Speak directly with our property coordinator during business hours or leave an urgent dispatch message.
-              </p>
-              <div class="card-action">
-                <a href="tel:+18005554663" style="font-weight: 700; color: var(--color-forest); font-size: 1.05rem;">+1 (800) 555-HOME</a>
-              </div>
-            </div>
+        <div class="contact-guarantee-strip">
+          <div class="contact-guarantee-item">
+            <div class="contact-guarantee-val">100% Bonded</div>
+            <div class="contact-guarantee-lbl">Insured Care Specialists</div>
           </div>
-
-          <div class="card">
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">✉️</div>
-              <h3 class="card-title">Electronic Mail</h3>
-              <p class="card-text">
-                Send property addresses, floor plans, or inspection requirement documents directly to our intake team.
-              </p>
-              <div class="card-action">
-                <a href="mailto:care@homewatchservice.com" style="font-weight: 700; color: var(--color-forest); font-size: 1.02rem;">care@homewatchservice.com</a>
-              </div>
-            </div>
+          <div class="contact-guarantee-item">
+            <div class="contact-guarantee-val">&lt; 60 Min</div>
+            <div class="contact-guarantee-lbl">Visit Report Portal Sync</div>
           </div>
-
-          <div class="card">
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">📍</div>
-              <h3 class="card-title">Operational Region</h3>
-              <p class="card-text">
-                Serving coastal residential enclaves, luxury beach communities, and seasonal vacation neighborhoods.
-              </p>
-              <div class="card-action">
-                <span style="font-weight: 700; color: var(--color-forest);">Mon – Sun: 7:00 AM – 8:00 PM</span>
-              </div>
-            </div>
+          <div class="contact-guarantee-item">
+            <div class="contact-guarantee-val">Zero Address</div>
+            <div class="contact-guarantee-lbl">Blind Key Vault Security</div>
+          </div>
+          <div class="contact-guarantee-item">
+            <div class="contact-guarantee-val">24/7 Rapid</div>
+            <div class="contact-guarantee-lbl">Emergency Storm Response</div>
           </div>
         </div>
       </div>
@@ -249,7 +271,7 @@
           </p>
         </div>
 
-        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: clamp(1.5rem, 4vw, 3rem); box-shadow: var(--card-shadow);">
+        <div class="contact-form-card">
           <!-- Feedback Alert -->
           <div id="contact-alert" class="form-feedback-alert" role="alert"></div>
 
@@ -327,138 +349,159 @@
       </div>
     </section>
 
-    <!-- SECTION 4: Service Enquiry Categories -->
+    <!-- SECTION 4: Service Enquiry Scenarios (Interactive Scenario Cards) -->
     <section class="section section-muted" id="enquiry-categories">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow">Common Situations</span>
-          <h2 class="section-title">Service Enquiry Categories</h2>
+          <span class="eyebrow">Occupancy Scenarios</span>
+          <h2 class="section-title">Select Your Property Scenario</h2>
           <p class="section-subtitle">
-            Most homeowners contact us regarding one of four primary occupancy scenarios.
+            Most homeowners configure coverage tailored to one of four common residency situations.
           </p>
         </div>
 
-        <div class="cards-grid-4">
-          <article class="card">
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">🏖️</div>
-              <h3 class="card-title">Seasonal Absences</h3>
-              <p class="card-text">
-                For families away for several months during offseason months who require regular visual checks and line flushing.
-              </p>
-              <div class="card-action">
-                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Bi-Weekly Protocol</span>
-              </div>
+        <div class="scenario-cards-grid">
+          <!-- Scenario 1 -->
+          <article class="scenario-card" role="button" tabindex="0" onclick="document.getElementById('contact-type').value='Seasonal Vacation Home Check'; document.getElementById('enquiry-form-section').scrollIntoView({behavior:'smooth'});" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: 0.75rem;">
+              <span class="card-icon" style="margin: 0; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; color: var(--color-forest);" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              </span>
+              <span class="status-pill-pass">Most Popular</span>
+            </div>
+            <h3 style="font-size: 1.15rem; margin-block-end: 0.5rem;">Seasonal Absences</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-block-end: 1rem; flex: 1;">
+              For families away for several months during offseason months who require regular visual checks and line flushing.
+            </p>
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-forest);">
+              Select Scenario &rarr;
             </div>
           </article>
 
-          <article class="card">
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">✈️</div>
-              <h3 class="card-title">Frequent Travelers</h3>
-              <p class="card-text">
-                For busy executives with secondary residences who travel intermittently and need on-demand property checks.
-              </p>
-              <div class="card-action">
-                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Flexible Scheduling</span>
-              </div>
+          <!-- Scenario 2 -->
+          <article class="scenario-card" role="button" tabindex="0" onclick="document.getElementById('contact-type').value='General Property Consultation'; document.getElementById('enquiry-form-section').scrollIntoView({behavior:'smooth'});" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: 0.75rem;">
+              <span class="card-icon" style="margin: 0; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; color: var(--color-forest);" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>
+              </span>
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-forest); background: var(--bg-subtle); padding: 0.2rem 0.6rem; border-radius: var(--radius-full);">Flexible</span>
+            </div>
+            <h3 style="font-size: 1.15rem; margin-block-end: 0.5rem;">Frequent Travelers</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-block-end: 1rem; flex: 1;">
+              For busy homeowners with secondary residences who travel intermittently and need on-demand property checks.
+            </p>
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-forest);">
+              Select Scenario &rarr;
             </div>
           </article>
 
-          <article class="card">
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">⛈️</div>
-              <h3 class="card-title">Storm Readiness</h3>
-              <p class="card-text">
-                Pre-storm patio furniture tie-downs and urgent post-weather perimeter assessments following severe weather alerts.
-              </p>
-              <div class="card-action">
-                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Rapid Response</span>
-              </div>
+          <!-- Scenario 3 -->
+          <article class="scenario-card" role="button" tabindex="0" onclick="document.getElementById('contact-type').value='Storm & Extreme Weather Check'; document.getElementById('enquiry-form-section').scrollIntoView({behavior:'smooth'});" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: 0.75rem;">
+              <span class="card-icon" style="margin: 0; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; color: #E53E3E;" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline></svg>
+              </span>
+              <span style="font-size: 0.75rem; font-weight: 700; color: #E53E3E; background: rgba(229, 62, 62, 0.1); padding: 0.2rem 0.6rem; border-radius: var(--radius-full);">Priority</span>
+            </div>
+            <h3 style="font-size: 1.15rem; margin-block-end: 0.5rem;">Storm Readiness</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-block-end: 1rem; flex: 1;">
+              Pre-storm patio furniture tie-downs and urgent post-weather perimeter assessments following severe weather alerts.
+            </p>
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-forest);">
+              Select Scenario &rarr;
             </div>
           </article>
 
-          <article class="card">
-            <div class="card-body">
-              <div class="card-icon" aria-hidden="true">📦</div>
-              <h3 class="card-title">Deliveries &amp; Mail</h3>
-              <p class="card-text">
-                Preventing visible packages from lingering on porches and sorting time-sensitive correspondence safely inside.
-              </p>
-              <div class="card-action">
-                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Secure Mail Foyer</span>
-              </div>
+          <!-- Scenario 4 -->
+          <article class="scenario-card" role="button" tabindex="0" onclick="document.getElementById('contact-type').value='Mail & Package Handling Only'; document.getElementById('enquiry-form-section').scrollIntoView({behavior:'smooth'});" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.click();}">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-block-end: 0.75rem;">
+              <span class="card-icon" style="margin: 0; width: 32px; height: 32px; display: inline-flex; align-items: center; justify-content: center; color: var(--color-forest);" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </span>
+              <span style="font-size: 0.75rem; font-weight: 700; color: var(--color-forest); background: var(--bg-subtle); padding: 0.2rem 0.6rem; border-radius: var(--radius-full);">Custody</span>
+            </div>
+            <h3 style="font-size: 1.15rem; margin-block-end: 0.5rem;">Deliveries &amp; Mail</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-block-end: 1rem; flex: 1;">
+              Preventing visible packages from lingering on porches and sorting time-sensitive correspondence safely inside.
+            </p>
+            <div style="font-size: 0.82rem; font-weight: 700; color: var(--color-forest);">
+              Select Scenario &rarr;
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 5: What Happens After an Enquiry -->
+    <!-- SECTION 5: What Happens After an Enquiry (Onboarding Stepper Track) -->
     <section class="section section-surface" id="after-enquiry">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow">Realistic Next Steps</span>
+          <span class="eyebrow">Onboarding Roadmap</span>
           <h2 class="section-title">What Happens After Your Enquiry</h2>
           <p class="section-subtitle">
             Our onboarding process is transparent, orderly, and tailored to your property's specific layout.
           </p>
         </div>
 
-        <div class="cards-grid-3">
-          <div class="card">
-            <div class="card-body">
-              <div class="step-number">1</div>
-              <h3 class="card-title">Intake Review within 24h</h3>
-              <p class="card-text">
-                A property care director reviews your location and requirements against our patrol coverage zones.
-              </p>
-              <div class="card-action">
-                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Quick Initial Review</span>
-              </div>
+        <div class="onboarding-stepper-track">
+          <!-- Step 1 -->
+          <article class="stepper-node-card">
+            <div class="stepper-node-header">
+              <span class="stepper-counter">01</span>
+              <span class="status-pill-pass">24h SLA</span>
             </div>
-          </div>
+            <h3 style="font-size: 1.2rem; margin-block-end: 0.5rem;">Intake Review &amp; Consultation</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5; margin: 0;">
+              A senior property director reviews your residence location, travel dates, and mechanical systems against our patrol coverage zones.
+            </p>
+          </article>
 
-          <div class="card">
-            <div class="card-body">
-              <div class="step-number">2</div>
-              <h3 class="card-title">Introductory Phone Call</h3>
-              <p class="card-text">
-                We confirm property details, special equipment (e.g. pools, generators, water softeners), and travel timing.
-              </p>
-              <div class="card-action">
-                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">15-Minute Alignment</span>
-              </div>
+          <!-- Step 2 -->
+          <article class="stepper-node-card">
+            <div class="stepper-node-header">
+              <span class="stepper-counter">02</span>
+              <span class="status-pill-pass">Personal Walk</span>
             </div>
-          </div>
+            <h3 style="font-size: 1.2rem; margin-block-end: 0.5rem;">On-Site Walkthrough &amp; Key Vault</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5; margin: 0;">
+              We tour your estate with you, map out water shutoff valves, inspect breaker panels, and register your randomized key safe code.
+            </p>
+          </article>
 
-          <div class="card">
-            <div class="card-body">
-              <div class="step-number">3</div>
-              <h3 class="card-title">Custom Checklist &amp; Keys</h3>
-              <p class="card-text">
-                We perform an initial walkthrough with you, establish your baseline photos, and issue your homeowner portal login.
-              </p>
-              <div class="card-action">
-                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Dashboard Activation</span>
-              </div>
+          <!-- Step 3 -->
+          <article class="stepper-node-card">
+            <div class="stepper-node-header">
+              <span class="stepper-counter">03</span>
+              <span class="status-pill-pass">Live Portal</span>
             </div>
-          </div>
+            <h3 style="font-size: 1.2rem; margin-block-end: 0.5rem;">Portal Activation &amp; First Visit</h3>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5; margin: 0;">
+              Your private client dashboard credentials are provided, your schedule is locked, and your baseline 18-point inspection is initiated.
+            </p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 6: Final Reassurance CTA and Footer -->
+    <!-- SECTION 6: Urgent Dispatch Banner -->
     <section class="section section-muted" id="contact-final-cta">
       <div class="container">
-        <div class="cta-banner-centered">
-          <h2>Have an Immediate Question?</h2>
-          <p>
-            Our dedicated team is ready to assist with any questions regarding service regions, key safe procedures, or visit schedules.
-          </p>
-          <div class="btn-group" style="justify-content: center;">
-            <a href="tel:+18005554663" class="btn btn-white">Call +1 (800) 555-HOME</a>
-            <a href="login.html" class="btn btn-outline-white">Client Portal Demo</a>
+        <div class="urgent-dispatch-banner">
+          <div>
+            <span style="font-size: 0.8rem; font-weight: 800; color: var(--color-gold); text-transform: uppercase; letter-spacing: 0.1em;">Immediate Assistance</span>
+            <h2 style="color: #FFFFFF; font-size: clamp(1.5rem, 2.5vw, 2rem); margin-block: 0.25rem 0.5rem;">Have an Immediate Property Concern?</h2>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 0.95rem; margin: 0; max-width: 600px;">
+              Enrolled clients enjoy priority dispatch. For urgent weather preparation or emergency access, call our 24/7 hotline.
+            </p>
+          </div>
+
+          <div class="btn-group urgent-banner-btn-group">
+            <a href="tel:+18005554663" class="btn btn-white" style="font-weight: 800; font-size: 1rem;">
+              Call +1 (800) 555-HOME
+            </a>
+            <a href="dashboard.html" class="btn btn-outline-white">
+              Client Portal
+            </a>
           </div>
         </div>
       </div>
@@ -546,7 +589,7 @@
 
       <div class="footer-bottom">
         <div>&copy; 2026 HavenGuard Vacation Home Watch &amp; Property Check Service. All rights reserved.</div>
-        <div style="display: flex; gap: 1.5rem;">
+        <div class="footer-bottom-links" style="display: flex; gap: 1.5rem; flex-wrap: wrap;">
           <a href="about.html" style="color: inherit;">Standards of Care</a>
           <a href="contact.html" style="color: inherit;">Emergency Escalation Protocol</a>
         </div>

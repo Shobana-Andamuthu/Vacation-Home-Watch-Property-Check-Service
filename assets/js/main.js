@@ -89,6 +89,7 @@
   }
 
   function applyDirection(dir) {
+    document.documentElement.classList.add('no-dir-transition');
     document.documentElement.setAttribute('dir', dir);
     document.documentElement.lang = dir === 'rtl' ? 'ar' : 'en';
     try {
@@ -120,10 +121,16 @@
         // Fallback structured badge if button had plain text
         btn.innerHTML = `
           <span class="dir-opt dir-opt-ltr ${!isRtl ? 'active' : ''}">LTR</span>
-          <span class="dir-opt-sep">|</span>
+          <span class="dir-opt-sep">/</span>
           <span class="dir-opt dir-opt-rtl ${isRtl ? 'active' : ''}">RTL</span>
         `;
       }
+    });
+
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        document.documentElement.classList.remove('no-dir-transition');
+      }, 100);
     });
   }
 
@@ -155,11 +162,23 @@
         backdrop.classList.remove('open');
         document.body.style.overflow = '';
         if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
+
+        // Automatically collapse Home dropdown and any other mobile accordion dropdowns
+        const openLists = drawer.querySelectorAll('.mobile-dropdown-list.show');
+        openLists.forEach(list => list.classList.remove('show'));
+        const activeToggles = drawer.querySelectorAll('.mobile-dropdown-toggle[aria-expanded="true"]');
+        activeToggles.forEach(toggle => toggle.setAttribute('aria-expanded', 'false'));
       }
     }
 
     if (hamburgerBtn) {
-      hamburgerBtn.addEventListener('click', openDrawer);
+      hamburgerBtn.addEventListener('click', () => {
+        if (drawer && drawer.classList.contains('open')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
     }
     if (closeBtn) {
       closeBtn.addEventListener('click', closeDrawer);
@@ -310,12 +329,65 @@
     setTimeout(hidePreloader, 1200);
   }
 
+  // --- Active Nav Link Controller ---
+  function initActiveNavLink() {
+    const rawPath = window.location.pathname.toLowerCase();
+    let current = rawPath.split('/').filter(Boolean).pop() || 'index.html';
+    if (!current || current === '/') current = 'index.html';
+    if (!current.includes('.')) current = current + '.html';
+
+    const desktopLinks = document.querySelectorAll('.site-header .nav-link:not(.dropdown-trigger)');
+    const homeTrigger = document.getElementById('home-dropdown-btn');
+    const dropdownItems = document.querySelectorAll('.site-header .dropdown-item');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-drawer .mobile-nav-link, .mobile-nav-drawer .mobile-sublink');
+
+    desktopLinks.forEach(el => el.classList.remove('active'));
+    if (homeTrigger) homeTrigger.classList.remove('active');
+    dropdownItems.forEach(el => el.classList.remove('active'));
+    mobileLinks.forEach(el => el.classList.remove('active'));
+
+    const mobileHomeToggle = document.getElementById('mobile-home-dropdown-toggle');
+    if (current === 'index.html') {
+      if (homeTrigger) homeTrigger.classList.add('active');
+      if (mobileHomeToggle) mobileHomeToggle.classList.add('active');
+      const item1 = document.querySelector('.site-header a[href="index.html"].dropdown-item');
+      if (item1) item1.classList.add('active');
+      const m1 = document.querySelector('.mobile-dropdown-list a[href="index.html"]') ||
+                 document.querySelector('.mobile-nav-drawer .mobile-sublink[href="index.html"]');
+      if (m1) m1.classList.add('active');
+    } else if (current === 'home-2.html') {
+      if (homeTrigger) homeTrigger.classList.add('active');
+      if (mobileHomeToggle) mobileHomeToggle.classList.add('active');
+      const item2 = document.querySelector('.site-header a[href="home-2.html"].dropdown-item');
+      if (item2) item2.classList.add('active');
+      const m2 = document.querySelector('.mobile-dropdown-list a[href="home-2.html"]') ||
+                 document.querySelector('.mobile-nav-drawer .mobile-sublink[href="home-2.html"]');
+      if (m2) m2.classList.add('active');
+    } else {
+      const baseName = current.replace('.html', '');
+      const targetDesktop = document.querySelector(`.site-header .nav-link[href="${current}"]`) ||
+                            document.querySelector(`.site-header .nav-link[href="${baseName}"]`) ||
+                            document.querySelector(`.site-header .nav-link[href*="${baseName}"]`);
+      if (targetDesktop) {
+        targetDesktop.classList.add('active');
+      }
+
+      const targetMobile = document.querySelector(`.mobile-nav-drawer a[href="${current}"]`) ||
+                           document.querySelector(`.mobile-nav-drawer a[href="${baseName}"]`) ||
+                           document.querySelector(`.mobile-nav-drawer a[href*="${baseName}"]`);
+      if (targetMobile) {
+        targetMobile.classList.add('active');
+      }
+    }
+  }
+
   // Run on DOM ready
   function initAll() {
     initPagePreloader();
     initTheme();
     initDirection();
     initNavigation();
+    initActiveNavLink();
     initBackToTop();
   }
 

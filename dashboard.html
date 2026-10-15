@@ -17,7 +17,7 @@
     })();
   </script>
 </head>
-<body style="min-height: 100vh; display: flex; flex-direction: column;">
+<body class="dashboard-body">
 
   <!-- Page Preloader -->
   <div id="page-preloader" class="page-preloader" aria-hidden="true">
@@ -38,15 +38,19 @@
 
 
   <!-- Dashboard Top Navigation Bar -->
-  <header class="site-header">
-    <div class="container navbar">
-      <div class="dashboard-nav-brand-group" style="display: flex; align-items: center; gap: 0.75rem;">
-        <!-- Mobile/Tablet Sidebar Drawer Toggle (Hidden on desktop >1024px) -->
-        <button class="hamburger-btn" id="dashboard-sidebar-toggle" aria-label="Toggle navigation sidebar">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+  <header class="site-header dashboard-header">
+    <div class="container navbar dashboard-top-navbar" id="dashboard-top-navbar">
+      <div class="dashboard-nav-brand-group">
+        <!-- Mobile/Tablet Sidebar Drawer Toggle (Hidden on desktop >1200px) -->
+        <button class="hamburger-btn" id="dashboard-sidebar-toggle" aria-label="Toggle navigation sidebar" aria-expanded="false">
+          <svg class="icon-hamburger" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
         <a href="index.html" class="nav-brand" id="brand-logo" aria-label="HavenGuard Home">
@@ -74,7 +78,7 @@
           <span class="dir-opt dir-opt-rtl">RTL</span>
         </button>
 
-        <!-- User Profile Badge (Highlighted) -->
+        <!-- User Profile Badge (Navbar Desktop) -->
         <div class="user-profile-badge" id="user-profile-badge" tabindex="0" role="button" aria-label="User Profile: Sarah J. (Verified Homeowner)">
           <div class="user-avatar-wrap">
             <div class="user-avatar-circle">SJ</div>
@@ -86,67 +90,126 @@
           </div>
         </div>
 
-        <a href="login.html" class="btn btn-secondary btn-sm nav-login-btn dashboard-logout-btn" title="Sign out of portal">
-          Logout
+        <!-- Dashboard Logout Button (Desktop with text, Mobile icon-only) -->
+        <a href="login.html" class="dashboard-logout-btn" id="dashboard-logout-btn" title="Sign out of portal" aria-label="Sign out of portal">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          <span class="logout-text">Logout</span>
         </a>
       </div>
     </div>
   </header>
 
+  <!-- Sidebar Mobile Backdrop -->
+  <div class="dashboard-sidebar-backdrop js-dashboard-backdrop" id="dashboard-sidebar-backdrop"></div>
+
   <!-- Dashboard Main Workspace -->
   <div class="dashboard-wrapper">
     <!-- Sidebar Navigation -->
-    <aside class="dashboard-sidebar" aria-label="Portal Navigation">
-      <div style="margin-block-end: 1.5rem; padding-block-end: 1rem; border-block-end: 1px solid var(--border-subtle);">
-        <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700;">
-          Assigned Estate
+    <aside class="dashboard-sidebar" id="dashboard-sidebar" aria-label="Portal Navigation">
+      <div class="sidebar-sticky-wrap">
+        <!-- Mobile Drawer Header with Close Button (Mobile Only) -->
+        <div class="sidebar-header-bar" id="sidebar-header-bar">
+          <span class="sidebar-header-title">Portal Navigation</span>
+          <button type="button" class="sidebar-close-btn js-sidebar-close" id="sidebar-drawer-close" aria-label="Close navigation sidebar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
         </div>
-        <div style="font-weight: 700; color: var(--text-primary); margin-block-start: 0.25rem; font-size: 1.05rem;">
-          Ocean Breeze Villa
-        </div>
-        <div style="font-size: 0.82rem; color: var(--color-forest); font-weight: 600;">
-          Status: Monitored &bull; Normal
-        </div>
-      </div>
 
-      <nav>
-        <ul class="dashboard-nav-list">
-          <li class="dashboard-nav-item">
-            <button type="button" class="active" data-target-view="view-overview" id="nav-btn-overview">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
-              <span>Overview</span>
-            </button>
-          </li>
-          <li class="dashboard-nav-item">
-            <button type="button" data-target-view="view-schedule" id="nav-btn-schedule">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              <span>Schedule Visit</span>
-            </button>
-          </li>
-          <li class="dashboard-nav-item">
-            <button type="button" data-target-view="view-reports" id="nav-btn-reports">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><polyline points="9 11 12 14 22 4"></polyline></svg>
-              <span>Visit Reports (2)</span>
-            </button>
-          </li>
-          <li class="dashboard-nav-item">
-            <button type="button" data-target-view="view-mail" id="nav-btn-mail">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-              <span>Mail Collection</span>
-            </button>
-          </li>
-        </ul>
-      </nav>
+        <!-- TOP SECTION: Assigned Estate Badge, Navigation & Inspector (mela vei / aligned straight with right header) -->
+        <div class="sidebar-top-section" id="sidebar-top-section">
+          <!-- 1. TOP: Assigned Estate Badge (mela vei) -->
+          <div class="sidebar-estate-card" id="sidebar-estate-card">
+            <div class="estate-label-row">
+              <span class="estate-caption">Assigned Estate</span>
+              <span class="estate-status-pill">
+                <span class="status-pulse-dot"></span>
+                <span>Monitored</span>
+              </span>
+            </div>
+            <div class="estate-name-title">Ocean Breeze Villa</div>
+            <div class="estate-subtext">Unit 4B &bull; Coastal Bluff</div>
+          </div>
 
-      <div style="margin-top: auto; padding-block-start: 1.5rem; border-block-start: 1px solid var(--border-subtle); font-size: 0.85rem; color: var(--text-secondary);">
-        <div style="font-weight: 700; color: var(--text-primary);">Assigned Inspector:</div>
-        <div>Marcus Vance (Bonded #4812)</div>
-        <div style="margin-block-start: 0.75rem;">
-          <a href="contact.html" style="color: var(--color-forest); font-weight: 600;">Direct Concierge Help →</a>
+          <!-- Mobile/Tablet Quick Controls (Theme & RTL - Hidden on Desktop) -->
+          <div class="sidebar-quick-controls" id="sidebar-quick-controls">
+            <button type="button" class="btn btn-secondary js-theme-toggle sidebar-ctrl-btn" id="sidebar-theme-toggle-btn" aria-label="Switch to dark mode" title="Switch to dark mode">
+              <span class="theme-icon-container">
+                <svg class="theme-icon theme-icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </span>
+              <span class="theme-label">Dark Mode</span>
+            </button>
+            <button type="button" class="btn btn-secondary js-rtl-toggle sidebar-ctrl-btn dir-toggle-btn" id="sidebar-rtl-toggle-btn" aria-label="Switch text direction to RTL" title="Current: LTR (Click to switch to RTL)">
+              <span class="dir-opt dir-opt-ltr active">LTR</span>
+              <span class="dir-opt-sep">/</span>
+              <span class="dir-opt dir-opt-rtl">RTL</span>
+            </button>
+          </div>
+
+          <!-- 2. MIDDLE: Navigation Menu Items -->
+          <nav class="sidebar-nav-container">
+            <ul class="dashboard-nav-list">
+              <li class="dashboard-nav-item">
+                <button type="button" class="active" data-target-view="view-overview" id="nav-btn-overview">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                  <span>Overview</span>
+                </button>
+              </li>
+              <li class="dashboard-nav-item">
+                <button type="button" data-target-view="view-schedule" id="nav-btn-schedule">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                  <span>Schedule Visit</span>
+                </button>
+              </li>
+              <li class="dashboard-nav-item">
+                <button type="button" data-target-view="view-reports" id="nav-btn-reports">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><polyline points="9 11 12 14 22 4"></polyline></svg>
+                  <span>Visit Reports (2)</span>
+                </button>
+              </li>
+              <li class="dashboard-nav-item">
+                <button type="button" data-target-view="view-mail" id="nav-btn-mail">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                  <span>Mail Collection</span>
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <!-- 3. ASSIGNED INSPECTOR (Compact) -->
+          <div class="sidebar-inspector-box">
+            <div class="inspector-badge-row">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span class="inspector-role-label">Assigned Inspector</span>
+            </div>
+            <div class="inspector-name-text">Marcus Vance (Bonded #4812)</div>
+            <a href="contact.html" class="inspector-link">Direct Concierge Help &rarr;</a>
+          </div>
         </div>
-        <div style="margin-block-start: 1rem; padding-block-start: 0.85rem; border-block-start: 1px dashed var(--border-subtle);">
-          <a href="login.html" class="btn btn-secondary btn-sm btn-block" style="text-align: center; justify-content: center; width: 100%;">
-            Sign Out
+
+        <!-- 4. BOTTOM: Profile & Sign Out (last la vei) -->
+        <div class="sidebar-footer-card">
+          <div class="sidebar-user-card" id="sidebar-user-card">
+            <div class="user-avatar-wrap">
+              <div class="user-avatar-circle" style="width: 32px; height: 32px; font-size: 0.8rem;">SJ</div>
+              <span class="user-avatar-status" style="width: 8px; height: 8px;"></span>
+            </div>
+            <div class="sidebar-user-meta">
+              <span class="sidebar-user-name">Sarah J.</span>
+              <span class="sidebar-user-badge">Verified Homeowner</span>
+            </div>
+          </div>
+          <a href="login.html" class="sidebar-signout-btn" id="sidebar-signout-btn" title="Sign out of portal">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Sign Out</span>
           </a>
         </div>
       </div>
@@ -159,7 +222,7 @@
            VIEW 1: OVERVIEW SUMMARY
            ===================================================================== -->
       <section id="view-overview" class="dashboard-view-section">
-        <div class="dashboard-header">
+        <div class="dashboard-view-header">
           <div class="dashboard-header-text">
             <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Property Watch Dashboard</h1>
             <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">
@@ -268,7 +331,7 @@
            VIEW 2: SCHEDULE VISIT FORM
            ===================================================================== -->
       <section id="view-schedule" class="dashboard-view-section" style="display: none;">
-        <div class="dashboard-header">
+        <div class="dashboard-view-header">
           <div class="dashboard-header-text">
             <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Schedule a Property Check</h1>
             <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">Request an on-site visit with customized inspection notes.</p>
@@ -334,7 +397,7 @@
            VIEW 3: VISIT REPORTS GALLERY & DETAIL
            ===================================================================== -->
       <section id="view-reports" class="dashboard-view-section" style="display: none;">
-        <div class="dashboard-header">
+        <div class="dashboard-view-header">
           <div class="dashboard-header-text">
             <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Photo-Documented Visit Reports</h1>
             <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">Browse past inspection reports with timestamped photographs and inspector notes.</p>
@@ -421,7 +484,7 @@
            VIEW 4: MAIL COLLECTION TRACKING
            ===================================================================== -->
       <section id="view-mail" class="dashboard-view-section" style="display: none;">
-        <div class="dashboard-header">
+        <div class="dashboard-view-header">
           <div class="dashboard-header-text">
             <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Mail &amp; Delivery Tracking</h1>
             <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">Monitor postal collection, parcel holding, and update storage preferences.</p>
@@ -433,7 +496,7 @@
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="mail-grid-container">
+        <div class="mail-grid-container">
           <!-- Status & Controls -->
           <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--card-shadow);">
             <h3 style="font-size: 1.25rem; margin-block-end: 1rem;">Current Receptacle Status</h3>

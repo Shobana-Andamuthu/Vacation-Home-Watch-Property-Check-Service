@@ -129,11 +129,11 @@
     </div>
     <ul class="mobile-nav-menu">
       <li class="mobile-nav-item has-dropdown">
-        <button type="button" class="mobile-nav-link mobile-dropdown-toggle" id="mobile-home-dropdown-toggle" aria-expanded="true">
+        <button type="button" class="mobile-nav-link mobile-dropdown-toggle active" id="mobile-home-dropdown-toggle" aria-expanded="false">
           <span>Home Variations</span>
           <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
-        <ul class="mobile-dropdown-list show">
+        <ul class="mobile-dropdown-list">
           <li><a href="index.html" class="mobile-sublink">Home 1 (Photography)</a></li>
           <li><a href="home-2.html" class="mobile-sublink active">Home 2 (Editorial)</a></li>
         </ul>
@@ -273,66 +273,102 @@
       </div>
     </section>
 
-    <!-- SECTION 3: Property Check Report Preview (Dashboard-Inspired UI Preview) -->
+    <!-- SECTION 3: Property Check Report Preview (Editorial Inspection Dossier) -->
     <section class="section section-surface" id="report-preview-section">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow">Digital Deliverable</span>
-          <h2 class="section-title">Property Check Report Preview</h2>
+          <span class="eyebrow">Editorial Dossier</span>
+          <h2 class="section-title">Property Inspection Dossier Preview</h2>
           <p class="section-subtitle">
-            An interactive UI preview of the actual visit report homeowners receive following every scheduled property walkthrough.
+            An authentic editorial preview of the structured physical walkthrough report delivered to homeowners following every visit.
           </p>
         </div>
 
-        <div class="report-preview-box">
-          <!-- Report Header Info -->
-          <div class="report-header">
+        <div class="editorial-dossier">
+          <!-- Left Column: Dossier Specification & Status -->
+          <div class="editorial-dossier-summary">
             <div>
-              <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Sample Client Report</div>
-              <h3 style="font-size: 1.35rem; color: var(--text-primary); margin-block-start: 0.25rem;">Ocean Breeze Villa — Routine Check</h3>
-              <div style="font-size: 0.9rem; color: var(--text-secondary); margin-block-start: 0.25rem;">
-                Visit Date: <strong>October 12, 2026</strong> &bull; Completed at 11:15 AM EST
+              <div class="dossier-stamp">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>Confirmed Verified &bull; Dossier #8824</span>
+              </div>
+              <h3 style="font-size: 1.45rem; margin-block-end: 0.5rem;">Ocean Breeze Villa — Physical Audit</h3>
+              <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5; margin-block-end: 1rem;">
+                Formal photographic record and environmental audit logged on-site via secure field tablet.
+              </p>
+
+              <!-- Specification Table -->
+              <table class="dossier-spec-table" aria-label="Inspection Metrics">
+                <tbody>
+                  <tr>
+                    <td class="dossier-spec-label">Walkthrough Timestamp</td>
+                    <td class="dossier-spec-val">Oct 12, 2026 &bull; 11:15 AM EST</td>
+                  </tr>
+                  <tr>
+                    <td class="dossier-spec-label">Assigned Inspector</td>
+                    <td class="dossier-spec-val">Marcus Vance (ID: HG-8842)</td>
+                  </tr>
+                  <tr>
+                    <td class="dossier-spec-label">Interior Climate</td>
+                    <td class="dossier-spec-val">72°F &bull; 48% Rel. Humidity</td>
+                  </tr>
+                  <tr>
+                    <td class="dossier-spec-label">Water Meter Status</td>
+                    <td class="dossier-spec-val">0.00 GPM (Zero Leak Flow)</td>
+                  </tr>
+                  <tr>
+                    <td class="dossier-spec-label">Perimeter Points</td>
+                    <td class="dossier-spec-val">14 of 14 Latched &amp; Locked</td>
+                  </tr>
+                  <tr style="border-block-end: none;">
+                    <td class="dossier-spec-label">Mail &amp; Deliveries</td>
+                    <td class="dossier-spec-val">2 Envelopes Vaulted</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-block-start: 1.25rem;">
+              <a href="dashboard.html" class="btn btn-secondary btn-sm" style="width: 100%; text-align: center;">View Interactive Portal Dossier</a>
+            </div>
+          </div>
+
+          <!-- Right Column: 2x2 Photo Verification Gallery -->
+          <div class="editorial-dossier-gallery">
+            <!-- Photo 1: Rear Patio & Grounds -->
+            <div class="dossier-photo-card">
+              <img src="assets/images/dossier-preview-1.jpg" alt="Patio and rear exterior grounds inspection" loading="lazy">
+              <div class="dossier-photo-caption">
+                <span>Rear Patio &amp; Grounds</span>
+                <span class="status-pill-pass">PASS</span>
               </div>
             </div>
-            <div style="display: flex; gap: 0.75rem; align-items: center;">
-              <span class="report-status-badge">● Inspection Status: All Clear</span>
-              <a href="dashboard.html" class="btn btn-secondary btn-sm">Open Full Report</a>
-            </div>
-          </div>
 
-          <!-- Report Photo Thumbnails -->
-          <div class="report-gallery">
-            <div class="report-thumb">
-              <img src="assets/images/report-sample-1.jpg" alt="Patio and rear exterior inspection photo">
-              <div class="report-thumb-label">Rear Patio &amp; Grounds</div>
+            <!-- Photo 2: Entry Deadbolt Torque -->
+            <div class="dossier-photo-card">
+              <img src="assets/images/dossier-preview-2.png" alt="Main entry deadbolt inspection and torque test" loading="lazy">
+              <div class="dossier-photo-caption">
+                <span>Entry Deadbolt Torque</span>
+                <span class="status-pill-pass">SECURE</span>
+              </div>
             </div>
-            <div class="report-thumb">
-              <img src="assets/images/report-sample-2.jpg" alt="Main entry doors and hardware inspection photo">
-              <div class="report-thumb-label">Main Entry Hardware</div>
-            </div>
-            <div class="report-thumb">
-              <img src="assets/images/report-sample-3.jpg" alt="Utility room and water meter check photo">
-              <div class="report-thumb-label">Water Meter (0.00 GPM)</div>
-            </div>
-            <div class="report-thumb">
-              <img src="assets/images/report-sample-4.jpg" alt="Mail collected in safe tray photo">
-              <div class="report-thumb-label">Foyer Mail Tray</div>
-            </div>
-          </div>
 
-          <!-- Notes & Mail Status -->
-          <div class="report-notes-grid">
-            <div class="report-note-card">
-              <strong>Exterior &amp; Locks:</strong>
-              No signs of forced entry or tampering. All sliding French doors secured.
+            <!-- Photo 3: Main Utility Meter -->
+            <div class="dossier-photo-card">
+              <img src="assets/images/dossier-preview-3.jpg" alt="Utility meter digital readout verification" loading="lazy">
+              <div class="dossier-photo-caption">
+                <span>Main Utility Meter</span>
+                <span class="status-pill-pass">VERIFIED</span>
+              </div>
             </div>
-            <div class="report-note-card">
-              <strong>Utilities &amp; HVAC:</strong>
-              Ambient temperature recorded at 72°F. Zero water pressure movement on main supply valve.
-            </div>
-            <div class="report-note-card">
-              <strong>Mail Collection:</strong>
-              <span style="color: var(--color-success); font-weight: 700;">Status: Collected</span> — 2 envelopes placed in interior foyer safe tray.
+
+            <!-- Photo 4: Mail & Package Vault -->
+            <div class="dossier-photo-card">
+              <img src="assets/images/dossier-preview-4.jpg" alt="Curbside mailbox and package intake vault" loading="lazy">
+              <div class="dossier-photo-caption">
+                <span>Curbside Mailbox Vault</span>
+                <span class="status-pill-pass">CATALOGUED</span>
+              </div>
             </div>
           </div>
         </div>
@@ -353,7 +389,7 @@
         <div class="editorial-care-grid">
           <!-- Main Highlight Card -->
           <div class="editorial-care-card">
-            <span class="eyebrow" style="background-color: var(--color-sage); color: var(--color-forest);">Coastal &amp; Waterfront Estates</span>
+            <span class="eyebrow">Coastal &amp; Waterfront Estates</span>
             <h3 style="font-size: 1.5rem; margin-block: 0.75rem;">Resisting Salt Air, Moisture &amp; Coastal Storms</h3>
             <p style="color: var(--text-secondary); line-height: 1.6; margin-block-end: 1.5rem;">
               Waterfront properties face rapid weather shifts and salt-spray oxidation. Our coastal protocol prioritizes exterior sliding seals, balustrade fixings, hurricane shutter readiness, and moisture intrusion around seaside terraces.
@@ -426,7 +462,7 @@
               The HavenGuard Homeowner Dashboard eliminates back-and-forth emails. View your complete inspection archive, review high-definition photo galleries, and update mail preferences from any web browser.
             </p>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-block-end: 2rem;">
+            <div class="portal-feature-grid">
               <div style="background-color: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md);">
                 <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem;">Calendar Scheduling</div>
                 <div style="font-size: 0.85rem; color: var(--text-secondary); margin-block-start: 0.25rem;">Book visits with custom notes in seconds.</div>

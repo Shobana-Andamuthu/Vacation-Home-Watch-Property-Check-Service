@@ -1,0 +1,182 @@
+[
+  {
+    "viewport": "1440px-Desktop",
+    "windowW": 1440,
+    "windowH": 900,
+    "scrollW": 1440,
+    "hasHScroll": false,
+    "nav": {
+      "top": 0,
+      "bottom": 64,
+      "height": 64
+    },
+    "sidebar": {
+      "top": 128,
+      "bottom": 964,
+      "height": 836,
+      "width": 270,
+      "gapBelowNavbar": 64,
+      "gapToBottomEdge": -64
+    },
+    "estateTop": 144,
+    "h1Top": 80,
+    "footerCard": {
+      "top": 842.5,
+      "bottom": 950.40625,
+      "distFromSidebarBottom": 13.59375,
+      "isVisibleInSidebar": true
+    },
+    "topSectionScrollable": true,
+    "isOpen": false
+  },
+  {
+    "viewport": "1024px-iPadLandscape",
+    "windowW": 1024,
+    "windowH": 768,
+    "scrollW": 1024,
+    "hasHScroll": false,
+    "nav": {
+      "top": 0,
+      "bottom": 64,
+      "height": 64
+    },
+    "sidebar": {
+      "top": 64,
+      "bottom": 768,
+      "height": 704,
+      "width": 270,
+      "gapBelowNavbar": 0,
+      "gapToBottomEdge": 0
+    },
+    "estateTop": 80,
+    "h1Top": 80,
+    "footerCard": {
+      "top": 646.5,
+      "bottom": 754.40625,
+      "distFromSidebarBottom": 13.59375,
+      "isVisibleInSidebar": true
+    },
+    "topSectionScrollable": true,
+    "isOpen": false
+  },
+  {
+    "viewport": "768px-iPadPortrait",
+    "windowW": 768,
+    "windowH": 1024,
+    "scrollW": 768,
+    "hasHScroll": false,
+    "nav": {
+      "top": 0,
+      "bottom": 60,
+      "height": 60
+    },
+    "sidebar": {
+      "top": 60,
+      "bottom": 1024,
+      "height": 964,
+      "width": 300,
+      "gapBelowNavbar": 0,
+      "gapToBottomEdge": 0
+    },
+    "estateTop": 137,
+    "h1Top": 76,
+    "footerCard": {
+      "top": 902.5,
+      "bottom": 1010.40625,
+      "distFromSidebarBottom": 13.59375,
+      "isVisibleInSidebar": true
+    },
+    "topSectionScrollable": true,
+    "isOpen": true
+  },
+  {
+    "viewport": "414px-MobileLarge",
+    "windowW": 414,
+    "windowH": 896,
+    "scrollW": 414,
+    "hasHScroll": false,
+    "nav": {
+      "top": 0,
+      "bottom": 60,
+      "height": 60
+    },
+    "sidebar": {
+      "top": 60,
+      "bottom": 896,
+      "height": 836,
+      "width": 300,
+      "gapBelowNavbar": 0,
+      "gapToBottomEdge": 0
+    },
+    "estateTop": 137,
+    "h1Top": 80,
+    "footerCard": {
+      "top": 774.5,
+      "bottom": 882.40625,
+      "distFromSidebarBottom": 13.59375,
+      "isVisibleInSidebar": true
+    },
+    "topSectionScrollable": true,
+    "isOpen": true
+  },
+  {
+    "viewport": "375px-MobileStandard",
+    "windowW": 375,
+    "windowH": 667,
+    "scrollW": 375,
+    "hasHScroll": false,
+    "nav": {
+      "top": 0,
+      "bottom": 60,
+      "height": 60
+    },
+    "sidebar": {
+      "top": 60,
+      "bottom": 667,
+      "height": 607,
+      "width": 300,
+      "gapBelowNavbar": 0,
+      "gapToBottomEdge": 0
+    },
+    "estateTop": 137,
+    "h1Top": 80,
+    "footerCard": {
+      "top": 545.5,
+      "bottom": 653.40625,
+      "distFromSidebarBottom": 13.59375,
+      "isVisibleInSidebar": true
+    },
+    "topSectionScrollable": true,
+    "isOpen": true
+  },
+  {
+    "viewport": "320px-MobileCompact",
+    "windowW": 320,
+    "windowH": 568,
+    "scrollW": 320,
+    "hasHScroll": false,
+    "nav": {
+      "top": 0,
+      "bottom": 60,
+      "height": 60
+    },
+    "sidebar": {
+      "top": 60,
+      "bottom": 568,
+      "height": 508,
+      "width": 272,
+      "gapBelowNavbar": 0,
+      "gapToBottomEdge": 0
+    },
+    "estateTop": 137,
+    "h1Top": 80,
+    "footerCard": {
+      "top": 446.5,
+      "bottom": 554.40625,
+      "distFromSidebarBottom": 13.59375,
+      "isVisibleInSidebar": true
+    },
+    "topSectionScrollable": true,
+    "isOpen": true
+  }
+]
