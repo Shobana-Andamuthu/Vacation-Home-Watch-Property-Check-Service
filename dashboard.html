@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homeowner Portal &amp; Dashboard | HavenGuard</title>
+  <meta name="description" content="Manage scheduled property visits, review timestamped photo inspection reports, and track mail collection for your vacation residence.">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('homewatch_theme') || 'light';
+      const d = localStorage.getItem('homewatch_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      document.documentElement.lang = d === 'rtl' ? 'ar' : 'en';
+    })();
+  </script>
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+  <!-- Page Preloader -->
+  <div id="page-preloader" class="page-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-shield-wrap">
+        <img src="assets/images/havenguard-shield-icon.png" alt="HavenGuard" class="preloader-shield" width="68" height="68">
+        <div class="preloader-pulse-ring"></div>
+      </div>
+      <div class="preloader-brand">
+        <span class="preloader-title">HavenGuard</span>
+        <span class="preloader-tagline">Your Home. Our Watch.</span>
+      </div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Dashboard Top Navigation Bar -->
+  <header class="site-header">
+    <div class="container navbar">
+      <div class="dashboard-nav-brand-group" style="display: flex; align-items: center; gap: 0.75rem;">
+        <!-- Mobile/Tablet Sidebar Drawer Toggle (Hidden on desktop >1024px) -->
+        <button class="hamburger-btn" id="dashboard-sidebar-toggle" aria-label="Toggle navigation sidebar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <a href="index.html" class="nav-brand" id="brand-logo" aria-label="HavenGuard Home">
+          <img src="assets/images/havenguard-shield-icon.png" alt="HavenGuard Shield Logo" class="brand-logo-shield" width="38" height="38">
+          <div class="brand-title-group">
+            <span class="brand-name">HavenGuard <span class="brand-portal-tag" style="font-size: 0.8rem; font-weight: 500; opacity: 0.8; margin-inline-start: 0.25rem;">Portal</span></span>
+            <span class="brand-tagline">Your Home. Our Watch.</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Action Controls -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="control-btn js-theme-toggle" id="theme-toggle-btn" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- RTL / LTR Toggle -->
+        <button class="control-btn dir-toggle-btn js-rtl-toggle" id="rtl-toggle-btn" aria-label="Switch text direction to RTL" title="Current: LTR (Click to switch to RTL)">
+          <span class="dir-opt dir-opt-ltr active">LTR</span>
+          <span class="dir-opt-sep">/</span>
+          <span class="dir-opt dir-opt-rtl">RTL</span>
+        </button>
+
+        <!-- User Profile Badge (Highlighted) -->
+        <div class="user-profile-badge" id="user-profile-badge" tabindex="0" role="button" aria-label="User Profile: Sarah J. (Verified Homeowner)">
+          <div class="user-avatar-wrap">
+            <div class="user-avatar-circle">SJ</div>
+            <span class="user-avatar-status" title="Active"></span>
+          </div>
+          <div class="user-profile-meta">
+            <span class="user-greeting-name">Sarah J.</span>
+            <span class="user-role-badge">Verified</span>
+          </div>
+        </div>
+
+        <a href="login.html" class="btn btn-secondary btn-sm nav-login-btn dashboard-logout-btn" title="Sign out of portal">
+          Logout
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Dashboard Main Workspace -->
+  <div class="dashboard-wrapper">
+    <!-- Sidebar Navigation -->
+    <aside class="dashboard-sidebar" aria-label="Portal Navigation">
+      <div style="margin-block-end: 1.5rem; padding-block-end: 1rem; border-block-end: 1px solid var(--border-subtle);">
+        <div style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); font-weight: 700;">
+          Assigned Estate
+        </div>
+        <div style="font-weight: 700; color: var(--text-primary); margin-block-start: 0.25rem; font-size: 1.05rem;">
+          Ocean Breeze Villa
+        </div>
+        <div style="font-size: 0.82rem; color: var(--color-forest); font-weight: 600;">
+          Status: Monitored &bull; Normal
+        </div>
+      </div>
+
+      <nav>
+        <ul class="dashboard-nav-list">
+          <li class="dashboard-nav-item">
+            <button type="button" class="active" data-target-view="view-overview" id="nav-btn-overview">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+              <span>Overview</span>
+            </button>
+          </li>
+          <li class="dashboard-nav-item">
+            <button type="button" data-target-view="view-schedule" id="nav-btn-schedule">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Schedule Visit</span>
+            </button>
+          </li>
+          <li class="dashboard-nav-item">
+            <button type="button" data-target-view="view-reports" id="nav-btn-reports">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><polyline points="9 11 12 14 22 4"></polyline></svg>
+              <span>Visit Reports (2)</span>
+            </button>
+          </li>
+          <li class="dashboard-nav-item">
+            <button type="button" data-target-view="view-mail" id="nav-btn-mail">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              <span>Mail Collection</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <div style="margin-top: auto; padding-block-start: 1.5rem; border-block-start: 1px solid var(--border-subtle); font-size: 0.85rem; color: var(--text-secondary);">
+        <div style="font-weight: 700; color: var(--text-primary);">Assigned Inspector:</div>
+        <div>Marcus Vance (Bonded #4812)</div>
+        <div style="margin-block-start: 0.75rem;">
+          <a href="contact.html" style="color: var(--color-forest); font-weight: 600;">Direct Concierge Help →</a>
+        </div>
+        <div style="margin-block-start: 1rem; padding-block-start: 0.85rem; border-block-start: 1px dashed var(--border-subtle);">
+          <a href="login.html" class="btn btn-secondary btn-sm btn-block" style="text-align: center; justify-content: center; width: 100%;">
+            Sign Out
+          </a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content" id="dashboard-main-area">
+
+      <!-- =====================================================================
+           VIEW 1: OVERVIEW SUMMARY
+           ===================================================================== -->
+      <section id="view-overview" class="dashboard-view-section">
+        <div class="dashboard-header">
+          <div class="dashboard-header-text">
+            <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Property Watch Dashboard</h1>
+            <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">
+              Real-time monitoring log for <strong>Ocean Breeze Villa</strong> (Unit 4B, Coastal Bluff).
+            </p>
+          </div>
+          <div class="dashboard-header-actions">
+            <button type="button" class="btn btn-primary btn-sm" onclick="document.getElementById('nav-btn-schedule').click()">
+              + Request New Visit
+            </button>
+            <a href="index.html" class="btn btn-secondary btn-sm">Public Website</a>
+          </div>
+        </div>
+
+        <!-- 4 Summary Stat Cards -->
+        <div class="stat-grid-4">
+          <!-- Card 1: Next Visit -->
+          <div class="stat-card">
+            <div class="stat-label">Next Scheduled Visit</div>
+            <div class="stat-value" id="summary-next-visit">2026-10-18</div>
+            <div class="stat-subtext" id="summary-next-date">Morning Slot (09:00 - 12:00)</div>
+          </div>
+
+          <!-- Card 2: Completed Visits -->
+          <div class="stat-card">
+            <div class="stat-label">Completed Checks</div>
+            <div class="stat-value" id="summary-completed-count">2 Visits</div>
+            <div class="stat-subtext" style="color: var(--color-success);">100% On-Time Protocol</div>
+          </div>
+
+          <!-- Card 3: Latest Inspection Report -->
+          <div class="stat-card">
+            <div class="stat-label">Latest Inspection Report</div>
+            <div class="stat-value" style="font-size: 1.35rem; color: var(--color-success); font-weight: 700;">
+              All Clear
+            </div>
+            <div class="stat-subtext" style="color: var(--text-secondary);">Oct 12, 2026 &bull; Passed</div>
+          </div>
+
+          <!-- Card 4: Mail Collection Status -->
+          <div class="stat-card">
+            <div class="stat-label">Mail Collection Status</div>
+            <div class="stat-value" id="summary-mail-status" style="font-size: 1.35rem; color: var(--color-forest);">
+              Collected
+            </div>
+            <div class="stat-subtext" id="summary-mail-subtext">Stored in Foyer Safe Box</div>
+          </div>
+        </div>
+
+        <!-- Recent Inspection Quick View -->
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.75rem; margin-block-end: 2rem; box-shadow: var(--card-shadow);">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-block-end: 1.25rem;">
+            <div>
+              <h3 style="font-size: 1.2rem;">Latest Inspection Walkthrough</h3>
+              <div style="font-size: 0.88rem; color: var(--text-secondary);">Logged on October 12, 2026 by Marcus Vance</div>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm js-open-report" data-report-id="R-2026-1012">
+              View Detailed Photo Report &amp; Checklist →
+            </button>
+          </div>
+
+          <!-- Photo grid -->
+          <div class="report-gallery" style="margin-block-end: 1rem;">
+            <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+              <img src="assets/images/report-sample-1.jpg" alt="Patio walkway check">
+              <div class="report-thumb-label">Rear Patio: Pass</div>
+            </div>
+            <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+              <img src="assets/images/report-sample-2.jpg" alt="Locks verified">
+              <div class="report-thumb-label">Deadbolts: Secure</div>
+            </div>
+            <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+              <img src="assets/images/report-sample-3.jpg" alt="Water meter reading">
+              <div class="report-thumb-label">Water Valve: OK</div>
+            </div>
+            <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+              <img src="assets/images/report-sample-4.jpg" alt="Collected mail safe box">
+              <div class="report-thumb-label">Mail: Collected</div>
+            </div>
+          </div>
+          <div style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; background: var(--bg-subtle); padding: 0.75rem 1rem; border-radius: var(--radius-md);">
+            <strong>Inspector Note:</strong> All 18 check points verified. HVAC thermostat held steady at 72°F. Zero plumbing leakage. 2 pieces of mail collected from curb receptacle.
+          </div>
+        </div>
+
+        <!-- Scheduled Visits Table -->
+        <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--card-shadow); overflow-x: auto;">
+          <h3 style="font-size: 1.2rem; margin-block-end: 1rem;">Visit History &amp; Upcoming Queue</h3>
+          <table style="width: 100%; border-collapse: collapse; text-align: start; min-width: 480px;">
+            <thead>
+              <tr style="background: var(--bg-subtle); color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase;">
+                <th style="padding: 0.75rem 1rem; text-align: start;">Property</th>
+                <th style="padding: 0.75rem 1rem; text-align: start;">Date</th>
+                <th style="padding: 0.75rem 1rem; text-align: start;">Time Slot</th>
+                <th style="padding: 0.75rem 1rem; text-align: start;">Status</th>
+              </tr>
+            </thead>
+            <tbody id="visits-table-body">
+              <!-- Dynamically rendered by dashboard.js from localStorage -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VIEW 2: SCHEDULE VISIT FORM
+           ===================================================================== -->
+      <section id="view-schedule" class="dashboard-view-section" style="display: none;">
+        <div class="dashboard-header">
+          <div class="dashboard-header-text">
+            <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Schedule a Property Check</h1>
+            <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">Request an on-site visit with customized inspection notes.</p>
+          </div>
+          <div class="dashboard-header-actions">
+            <button type="button" class="btn btn-secondary btn-sm" onclick="document.getElementById('nav-btn-overview').click()">
+              &larr; Back to Overview
+            </button>
+          </div>
+        </div>
+
+        <div style="max-width: 720px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--card-shadow);">
+          <!-- Feedback Alert -->
+          <div id="schedule-alert" class="form-feedback-alert" role="alert"></div>
+
+          <form id="schedule-visit-form" novalidate>
+            <!-- Property Selector -->
+            <div class="form-group">
+              <label for="visit-property" class="form-label">Select Monitored Property <span class="required">*</span></label>
+              <select id="visit-property" class="form-control" required>
+                <option value="Ocean Breeze Villa">Ocean Breeze Villa (Coastal Bluff, Unit 4B)</option>
+                <option value="Highland Mountain Lodge">Highland Mountain Lodge (Alpine Vista)</option>
+                <option value="Coastal Shoreline Estate">Coastal Shoreline Estate (Palmetto Bay)</option>
+              </select>
+            </div>
+
+            <div class="form-grid-2">
+              <!-- Date Picker (min date enforced) -->
+              <div class="form-group">
+                <label for="visit-date" class="form-label">Requested Visit Date <span class="required">*</span></label>
+                <input type="date" id="visit-date" class="form-control" required>
+              </div>
+
+              <!-- Time Slot -->
+              <div class="form-group">
+                <label for="visit-slot" class="form-label">Available Time Window <span class="required">*</span></label>
+                <select id="visit-slot" class="form-control" required>
+                  <option value="Morning (09:00 - 12:00)">Morning Window (09:00 - 12:00)</option>
+                  <option value="Afternoon (13:00 - 16:00)">Afternoon Window (13:00 - 16:00)</option>
+                  <option value="Pre-Storm Priority Check">Pre-Storm Priority Check</option>
+                  <option value="Post-Weather Rapid Verification">Post-Weather Rapid Verification</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Custom Instructions -->
+            <div class="form-group">
+              <label for="visit-notes" class="form-label">Visit Instructions &amp; Areas of Focus</label>
+              <textarea id="visit-notes" rows="4" class="form-control" placeholder="e.g. Please check irrigation timer after tomorrow's rain, run guest bath taps, and bring in parcel delivery from porch..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="padding-block: 0.9rem;" id="submit-schedule-btn">
+              Confirm &amp; Record Visit Request
+            </button>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">
+              * Visit entries are saved locally in your browser session and update your dashboard queue immediately.
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VIEW 3: VISIT REPORTS GALLERY & DETAIL
+           ===================================================================== -->
+      <section id="view-reports" class="dashboard-view-section" style="display: none;">
+        <div class="dashboard-header">
+          <div class="dashboard-header-text">
+            <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Photo-Documented Visit Reports</h1>
+            <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">Browse past inspection reports with timestamped photographs and inspector notes.</p>
+          </div>
+          <div class="dashboard-header-actions">
+            <button type="button" class="btn btn-primary btn-sm" onclick="document.getElementById('nav-btn-schedule').click()">
+              + Request New Visit
+            </button>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1.75rem;">
+          <!-- Report Card 1 -->
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--card-shadow);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-block-end: 1rem;">
+              <div>
+                <span class="report-status-badge">● All Systems Normal</span>
+                <h3 style="font-size: 1.25rem; margin-block-start: 0.4rem;">Ocean Breeze Villa — Routine Walkthrough</h3>
+                <div style="font-size: 0.88rem; color: var(--text-secondary);">
+                  October 12, 2026 &bull; 10:14 AM - 11:15 AM EST &bull; Inspector: Marcus Vance
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm js-open-report" data-report-id="R-2026-1012">
+                Open Full Report Modal
+              </button>
+            </div>
+
+            <div class="report-gallery" style="margin-block-end: 1rem;">
+              <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+                <img src="assets/images/report-sample-1.jpg" alt="Patio photo">
+                <div class="report-thumb-label">Click to Inspect Patio Photo</div>
+              </div>
+              <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+                <img src="assets/images/report-sample-2.jpg" alt="Locks photo">
+                <div class="report-thumb-label">Click to Inspect Locks Photo</div>
+              </div>
+              <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+                <img src="assets/images/report-sample-3.jpg" alt="Plumbing valve">
+                <div class="report-thumb-label">Click to Inspect Meter Photo</div>
+              </div>
+              <div class="report-thumb js-open-report" data-report-id="R-2026-1012">
+                <img src="assets/images/report-sample-4.jpg" alt="Mail tray">
+                <div class="report-thumb-label">Click to Inspect Mail Photo</div>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5;">
+              <strong>Summary:</strong> Full 18-point check executed. No evidence of storm damage or unauthorized entry. Water meter verified stationary (zero flow). Replaced furnace filter.
+            </p>
+          </div>
+
+          <!-- Report Card 2 -->
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--card-shadow);">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-block-end: 1rem;">
+              <div>
+                <span class="report-status-badge">● Weather Preparation Complete</span>
+                <h3 style="font-size: 1.25rem; margin-block-start: 0.4rem;">Highland Mountain Lodge — Pre-Storm Review</h3>
+                <div style="font-size: 0.88rem; color: var(--text-secondary);">
+                  September 28, 2026 &bull; 01:10 PM - 02:40 PM EST &bull; Inspector: Elena Rostova
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm js-open-report" data-report-id="R-2026-0928">
+                Open Full Report Modal
+              </button>
+            </div>
+
+            <div class="report-gallery" style="margin-block-end: 1rem; grid-template-columns: repeat(2, 1fr);">
+              <div class="report-thumb js-open-report" data-report-id="R-2026-0928">
+                <img src="assets/images/report-sample-5.jpg" alt="Highland Mountain Lodge exterior cedar deck and pine branch clearance">
+                <div class="report-thumb-label">Exterior Deck &amp; Trellis: Clear</div>
+              </div>
+              <div class="report-thumb js-open-report" data-report-id="R-2026-0928">
+                <img src="assets/images/report-sample-6.jpg" alt="Smart digital thermostat reading optimal 68°F">
+                <div class="report-thumb-label">HVAC &amp; Ambient Thermostat: 68°F</div>
+              </div>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.5;">
+              <strong>Summary:</strong> Outdoor patio chairs and umbrellas secured in storage garage. Gutter downspouts verified unobstructed. Heating maintained at 68°F.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VIEW 4: MAIL COLLECTION TRACKING
+           ===================================================================== -->
+      <section id="view-mail" class="dashboard-view-section" style="display: none;">
+        <div class="dashboard-header">
+          <div class="dashboard-header-text">
+            <h1 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem);">Mail &amp; Delivery Tracking</h1>
+            <p style="color: var(--text-secondary); margin-block-start: 0.25rem;">Monitor postal collection, parcel holding, and update storage preferences.</p>
+          </div>
+          <div class="dashboard-header-actions">
+            <button type="button" class="btn btn-primary btn-sm" onclick="document.getElementById('nav-btn-schedule').click()">
+              + Request New Visit
+            </button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="mail-grid-container">
+          <!-- Status & Controls -->
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); padding: clamp(1.5rem, 3vw, 2.5rem); box-shadow: var(--card-shadow);">
+            <h3 style="font-size: 1.25rem; margin-block-end: 1rem;">Current Receptacle Status</h3>
+
+            <div style="margin-block-end: 1.5rem;">
+              <span style="font-size: 0.88rem; color: var(--text-muted); display: block; margin-block-end: 0.25rem;">Active Status</span>
+              <span id="mail-badge-indicator" style="display: inline-block; padding: 0.4rem 1rem; border-radius: var(--radius-full); font-weight: 700; background: rgba(46, 125, 50, 0.12); color: var(--color-success); font-size: 1rem;">
+                Collected
+              </span>
+            </div>
+
+            <!-- Demo Status Updater -->
+            <div class="form-group">
+              <label for="mail-status-select" class="form-label">Update Mail Status (Interactive Demo)</label>
+              <select id="mail-status-select" class="form-control">
+                <option value="Collected">Collected (Held in Foyer Safe Box)</option>
+                <option value="Awaiting Collection">Awaiting Collection (Next Visit)</option>
+                <option value="No Mail Found">No Mail Found (Receptacle Empty)</option>
+              </select>
+            </div>
+
+            <div id="mail-feedback" style="display: none; font-size: 0.85rem; color: var(--color-success); font-weight: 600; margin-block-end: 1rem;"></div>
+
+            <div style="background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md); font-size: 0.88rem; color: var(--text-secondary); line-height: 1.5;">
+              <strong>Storage Protocol:</strong> Letters, flyers, and magazines are brought indoors during every scheduled visit and placed into your designated lockable foyer tray to eliminate visual evidence of vacancy.
+            </div>
+          </div>
+
+          <!-- Mail Graphic Preview -->
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--card-shadow); display: flex; flex-direction: column;">
+            <img src="assets/images/mail-collection.jpg" alt="Property caretaker collecting postal letters and packages from curbside mailbox" style="width: 100%; aspect-ratio: 4/3; object-fit: cover;">
+            <div style="padding: 1.25rem;">
+              <h4 style="margin-block-end: 0.5rem;">Curb Receptacle Log</h4>
+              <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.5;">
+                Last checked on <strong>October 12, 2026</strong>. Two first-class envelopes retrieved and stored. Zero junk flyer backlog.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Detailed Report Lightbox Modal -->
+  <div id="report-detail-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-report-title">
+    <div class="modal-box" style="padding: clamp(1.5rem, 3vw, 2.5rem);">
+      <button type="button" class="modal-close-btn" id="modal-close-btn" aria-label="Close report dialog">✕</button>
+      
+      <div style="border-block-end: 1px solid var(--border-subtle); padding-block-end: 1.25rem; margin-block-end: 1.5rem;">
+        <span id="modal-report-status" class="report-status-badge">All Systems Normal</span>
+        <h2 id="modal-report-title" style="margin-block-start: 0.5rem; font-size: 1.5rem;">Ocean Breeze Villa — Visit Report</h2>
+        <div id="modal-report-date" style="font-size: 0.9rem; color: var(--text-secondary); margin-block-start: 0.25rem;">
+          October 12, 2026 | 10:14 AM - 11:15 AM EST
+        </div>
+        <div id="modal-report-inspector" style="font-size: 0.85rem; color: var(--color-forest); font-weight: 600; margin-block-start: 0.25rem;">
+          Conducted by: Marcus Vance
+        </div>
+      </div>
+
+      <!-- Notes Area -->
+      <div style="margin-block-end: 1.5rem;">
+        <h4 style="margin-block-end: 0.5rem;">Inspector Findings &amp; Observations</h4>
+        <p id="modal-report-notes" style="color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; background: var(--bg-subtle); padding: 1rem; border-radius: var(--radius-md);">
+          All perimeter doors and locks checked.
+        </p>
+      </div>
+
+      <!-- High-Res Photo Gallery in Modal -->
+      <h4 style="margin-block-end: 0.75rem;">Verified Inspection Photographs</h4>
+      <div id="modal-report-photos" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-block-end: 1.5rem;">
+        <!-- Filled by JS -->
+      </div>
+
+      <div style="display: flex; justify-content: flex-end;">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="DashboardApp.closeReportModal()">
+          Close Report Preview
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button type="button" class="back-to-top js-back-to-top" id="back-to-top-btn" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

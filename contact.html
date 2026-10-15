@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Property Concierge | HavenGuard Home Watch</title>
+  <meta name="description" content="Reach our vacation home watch team to request property check services, schedule an onboarding walkthrough, or enquire about custom coverage.">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function() {
+      const t = localStorage.getItem('homewatch_theme') || 'light';
+      const d = localStorage.getItem('homewatch_dir') || 'ltr';
+      document.documentElement.setAttribute('data-theme', t);
+      document.documentElement.setAttribute('dir', d);
+      document.documentElement.lang = d === 'rtl' ? 'ar' : 'en';
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Page Preloader -->
+  <div id="page-preloader" class="page-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-shield-wrap">
+        <img src="assets/images/havenguard-shield-icon.png" alt="HavenGuard" class="preloader-shield" width="68" height="68">
+        <div class="preloader-pulse-ring"></div>
+      </div>
+      <div class="preloader-brand">
+        <span class="preloader-title">HavenGuard</span>
+        <span class="preloader-tagline">Your Home. Our Watch.</span>
+      </div>
+      <div class="preloader-progress-track">
+        <div class="preloader-progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Navigation Header -->
+  <header class="site-header">
+    <div class="container navbar">
+            <!-- Logo -->
+      <a href="index.html" class="nav-brand" id="brand-logo" aria-label="HavenGuard - Your Home. Our Watch.">
+        <img src="assets/images/havenguard-shield-icon.png" alt="HavenGuard Shield Logo" class="brand-logo-shield" width="38" height="38">
+        <div class="brand-title-group">
+          <span class="brand-name">HavenGuard</span>
+          <span class="brand-tagline">Your Home. Our Watch.</span>
+        </div>
+      </a>
+
+      <!-- Desktop Menu Links -->
+      <nav class="nav-navigation" aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <button type="button" class="nav-link dropdown-trigger" aria-expanded="false" id="home-dropdown-btn">
+              <span>Home</span>
+              <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <ul class="dropdown-menu" aria-label="Home Variations">
+              <li><a href="index.html" class="dropdown-item">Home 1 (Photography)</a></li>
+              <li><a href="home-2.html" class="dropdown-item">Home 2 (Editorial)</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
+          <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="nav-actions">
+        <!-- Theme Toggle -->
+        <button class="control-btn js-theme-toggle" id="theme-toggle-btn" aria-label="Switch to dark mode" title="Switch to dark mode">
+          <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- RTL / LTR Toggle -->
+        <button class="control-btn dir-toggle-btn js-rtl-toggle" id="rtl-toggle-btn" aria-label="Switch text direction to RTL" title="Current: LTR (Click to switch to RTL)">
+          <span class="dir-opt dir-opt-ltr active">LTR</span>
+          <span class="dir-opt-sep">/</span>
+          <span class="dir-opt dir-opt-rtl">RTL</span>
+        </button>
+
+        <!-- Simple Words Sign In Button -->
+        <a href="login.html" class="btn btn-secondary btn-sm nav-login-btn" id="nav-login-btn">
+          Sign In
+        </a>
+
+        <!-- Theme Matching CTA Button -->
+        <a href="contact.html" class="btn btn-primary btn-sm nav-cta-btn" id="nav-cta-btn">
+          Book Check
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="hamburger-btn js-hamburger-btn" id="mobile-menu-btn" aria-label="Open mobile navigation menu" aria-expanded="false">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer & Backdrop -->
+  <div class="mobile-nav-backdrop js-mobile-backdrop"></div>
+  <aside class="mobile-nav-drawer js-mobile-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+    <div class="mobile-nav-header">
+      <a href="index.html" class="nav-brand" aria-label="HavenGuard Home">
+        <img src="assets/images/havenguard-shield-icon.png" alt="HavenGuard Shield Logo" class="brand-logo-shield" width="34" height="34">
+        <div class="brand-title-group">
+          <span class="brand-name">HavenGuard</span>
+          <span class="brand-tagline">Your Home. Our Watch.</span>
+        </div>
+      </a>
+      <button class="control-btn js-drawer-close" aria-label="Close navigation menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <ul class="mobile-nav-menu">
+      <li class="mobile-nav-item has-dropdown">
+        <button type="button" class="mobile-nav-link mobile-dropdown-toggle" id="mobile-home-dropdown-toggle" aria-expanded="false">
+          <span>Home Variations</span>
+          <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <ul class="mobile-dropdown-list">
+          <li><a href="index.html" class="mobile-sublink">Home 1 (Photography)</a></li>
+          <li><a href="home-2.html" class="mobile-sublink">Home 2 (Editorial)</a></li>
+        </ul>
+      </li>
+      <li><a href="services.html" class="mobile-nav-link">Services</a></li>
+      <li><a href="about.html" class="mobile-nav-link">About Us</a></li>
+      <li><a href="contact.html" class="mobile-nav-link active">Contact</a></li>
+      <li><a href="dashboard.html" class="mobile-nav-link mobile-nav-highlight">Portal Dashboard</a></li>
+      <li><a href="login.html" class="mobile-nav-link">Sign In</a></li>
+    </ul>
+    <div class="mobile-nav-controls">
+      <div class="mobile-controls-row">
+        <button class="btn btn-secondary js-theme-toggle mobile-ctrl-btn" aria-label="Switch to dark mode">
+          <span class="theme-icon-container">
+            <svg class="theme-icon theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+          <span class="theme-label">Dark Mode</span>
+        </button>
+        <button class="btn btn-secondary js-rtl-toggle mobile-ctrl-btn dir-toggle-btn" aria-label="Switch text direction to RTL" title="Current: LTR (Click to switch to RTL)">
+          <span class="dir-opt dir-opt-ltr active">LTR</span>
+          <span class="dir-opt-sep">/</span>
+          <span class="dir-opt dir-opt-rtl">RTL</span>
+        </button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+        <a href="login.html" class="btn btn-secondary btn-block">Sign In</a>
+        <a href="contact.html" class="btn btn-primary btn-block">Book Check</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       MAIN CONTENT: EXACTLY 6 MAJOR SECTIONS
+       ========================================================================= -->
+  <main id="main-content">
+
+    <!-- SECTION 1: Page Introduction -->
+    <section class="section section-surface" id="contact-intro">
+      <div class="container">
+        <div class="split-layout">
+          <div>
+            <span class="eyebrow">Direct Property Care Concierge</span>
+            <h1 style="margin-block-end: 1rem;">Get in Touch with Our Property Team</h1>
+            <p style="color: var(--text-secondary); font-size: 1.15rem; line-height: 1.6; margin-block-end: 2rem;">
+              Whether you need weekly checks during your seasonal travels or wish to configure a customized property observation plan, our property directors are ready to assist.
+            </p>
+            <div class="btn-group">
+              <a href="#enquiry-form-section" class="btn btn-primary">Start Property Intake</a>
+              <a href="tel:+18005554663" class="btn btn-secondary">Call: (800) 555-HOME</a>
+            </div>
+          </div>
+          <div class="split-img-wrapper">
+            <img src="assets/images/contact-concierge.jpg" alt="HavenGuard dedicated property care concierge director ready for client consultation" loading="eager" style="border-radius: var(--radius-lg); width: 100%; object-fit: cover; aspect-ratio: 4/3; box-shadow: var(--card-shadow);">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Contact and Enquiry Information (Verified/Realistic Business Details) -->
+    <section class="section section-muted" id="business-details">
+      <div class="container">
+        <div class="cards-grid-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-icon" aria-hidden="true">📞</div>
+              <h3 class="card-title">Telephone Dispatch</h3>
+              <p class="card-text">
+                Speak directly with our property coordinator during business hours or leave an urgent dispatch message.
+              </p>
+              <div class="card-action">
+                <a href="tel:+18005554663" style="font-weight: 700; color: var(--color-forest); font-size: 1.05rem;">+1 (800) 555-HOME</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="card-icon" aria-hidden="true">✉️</div>
+              <h3 class="card-title">Electronic Mail</h3>
+              <p class="card-text">
+                Send property addresses, floor plans, or inspection requirement documents directly to our intake team.
+              </p>
+              <div class="card-action">
+                <a href="mailto:care@homewatchservice.com" style="font-weight: 700; color: var(--color-forest); font-size: 1.02rem;">care@homewatchservice.com</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="card-icon" aria-hidden="true">📍</div>
+              <h3 class="card-title">Operational Region</h3>
+              <p class="card-text">
+                Serving coastal residential enclaves, luxury beach communities, and seasonal vacation neighborhoods.
+              </p>
+              <div class="card-action">
+                <span style="font-weight: 700; color: var(--color-forest);">Mon – Sun: 7:00 AM – 8:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: Interactive Enquiry Form -->
+    <section class="section section-surface" id="enquiry-form-section">
+      <div class="container-narrow">
+        <div class="section-header">
+          <span class="eyebrow">Property Intake</span>
+          <h2 class="section-title">Submit a Property Care Enquiry</h2>
+          <p class="section-subtitle">
+            Provide your property details below. We review each request individually to determine exact inspection scope.
+          </p>
+        </div>
+
+        <div style="background-color: var(--bg-surface); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: clamp(1.5rem, 4vw, 3rem); box-shadow: var(--card-shadow);">
+          <!-- Feedback Alert -->
+          <div id="contact-alert" class="form-feedback-alert" role="alert"></div>
+
+          <form id="enquiry-form" novalidate>
+            <div class="form-grid-2">
+              <!-- Full Name -->
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Full Name <span class="required">*</span></label>
+                <input type="text" id="contact-name" class="form-control" placeholder="e.g. Sarah Jenkins" required>
+                <div class="invalid-feedback">Please provide your full name (at least 2 characters).</div>
+              </div>
+
+              <!-- Email Address -->
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Email Address <span class="required">*</span></label>
+                <input type="email" id="contact-email" class="form-control" placeholder="e.g. sarah@example.com" required>
+                <div class="invalid-feedback">Please provide a valid email address.</div>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <!-- Phone Number -->
+              <div class="form-group">
+                <label for="contact-phone" class="form-label">Phone Number (Optional)</label>
+                <input type="tel" id="contact-phone" class="form-control" placeholder="e.g. +1 (555) 234-5678">
+              </div>
+
+              <!-- Property Location -->
+              <div class="form-group">
+                <label for="contact-location" class="form-label">Property Location / City <span class="required">*</span></label>
+                <input type="text" id="contact-location" class="form-control" placeholder="e.g. Seaside Harbor, FL" required>
+                <div class="invalid-feedback">Please indicate your property location or community name.</div>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <!-- Enquiry Type -->
+              <div class="form-group">
+                <label for="contact-type" class="form-label">Enquiry Category</label>
+                <select id="contact-type" class="form-control">
+                  <option value="Seasonal Vacation Home Check">Seasonal Vacation Home (Bi-Weekly / Weekly)</option>
+                  <option value="Snowbird Extended Absence">Snowbird Extended Winter / Summer Absence</option>
+                  <option value="Storm &amp; Extreme Weather Check">Storm &amp; High-Wind Visual Check</option>
+                  <option value="Mail &amp; Package Handling Only">Mail Collection &amp; Keyholder Escort</option>
+                  <option value="General Property Consultation">General Property Consultation</option>
+                </select>
+              </div>
+
+              <!-- Preferred Contact Method -->
+              <div class="form-group">
+                <label for="contact-method" class="form-label">Preferred Contact Method</label>
+                <select id="contact-method" class="form-control">
+                  <option value="Email">Email Communication</option>
+                  <option value="Phone Call">Direct Phone Call</option>
+                  <option value="SMS / WhatsApp">SMS Text Message</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message &amp; Vacancy Schedule <span class="required">*</span></label>
+              <textarea id="contact-message" rows="4" class="form-control" placeholder="Tell us about your property type, approximate dates of absence, and any specific areas of concern (e.g. pool, wine cellar, irrigation)..." required></textarea>
+              <div class="invalid-feedback">Please provide message details regarding your property needs (min 10 characters).</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="padding-block: 0.95rem; font-size: 1.05rem;" id="submit-enquiry-btn">
+              Submit Property Enquiry
+            </button>
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem;">
+              * Real submission triggers automated client intake. Demo mode displays interactive confirmation feedback.
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: Service Enquiry Categories -->
+    <section class="section section-muted" id="enquiry-categories">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Common Situations</span>
+          <h2 class="section-title">Service Enquiry Categories</h2>
+          <p class="section-subtitle">
+            Most homeowners contact us regarding one of four primary occupancy scenarios.
+          </p>
+        </div>
+
+        <div class="cards-grid-4">
+          <article class="card">
+            <div class="card-body">
+              <div class="card-icon" aria-hidden="true">🏖️</div>
+              <h3 class="card-title">Seasonal Absences</h3>
+              <p class="card-text">
+                For families away for several months during offseason months who require regular visual checks and line flushing.
+              </p>
+              <div class="card-action">
+                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Bi-Weekly Protocol</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <div class="card-icon" aria-hidden="true">✈️</div>
+              <h3 class="card-title">Frequent Travelers</h3>
+              <p class="card-text">
+                For busy executives with secondary residences who travel intermittently and need on-demand property checks.
+              </p>
+              <div class="card-action">
+                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Flexible Scheduling</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <div class="card-icon" aria-hidden="true">⛈️</div>
+              <h3 class="card-title">Storm Readiness</h3>
+              <p class="card-text">
+                Pre-storm patio furniture tie-downs and urgent post-weather perimeter assessments following severe weather alerts.
+              </p>
+              <div class="card-action">
+                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Rapid Response</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-body">
+              <div class="card-icon" aria-hidden="true">📦</div>
+              <h3 class="card-title">Deliveries &amp; Mail</h3>
+              <p class="card-text">
+                Preventing visible packages from lingering on porches and sorting time-sensitive correspondence safely inside.
+              </p>
+              <div class="card-action">
+                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Secure Mail Foyer</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: What Happens After an Enquiry -->
+    <section class="section section-surface" id="after-enquiry">
+      <div class="container">
+        <div class="section-header">
+          <span class="eyebrow">Realistic Next Steps</span>
+          <h2 class="section-title">What Happens After Your Enquiry</h2>
+          <p class="section-subtitle">
+            Our onboarding process is transparent, orderly, and tailored to your property's specific layout.
+          </p>
+        </div>
+
+        <div class="cards-grid-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="step-number">1</div>
+              <h3 class="card-title">Intake Review within 24h</h3>
+              <p class="card-text">
+                A property care director reviews your location and requirements against our patrol coverage zones.
+              </p>
+              <div class="card-action">
+                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Quick Initial Review</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="step-number">2</div>
+              <h3 class="card-title">Introductory Phone Call</h3>
+              <p class="card-text">
+                We confirm property details, special equipment (e.g. pools, generators, water softeners), and travel timing.
+              </p>
+              <div class="card-action">
+                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">15-Minute Alignment</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body">
+              <div class="step-number">3</div>
+              <h3 class="card-title">Custom Checklist &amp; Keys</h3>
+              <p class="card-text">
+                We perform an initial walkthrough with you, establish your baseline photos, and issue your homeowner portal login.
+              </p>
+              <div class="card-action">
+                <span style="font-size: 0.88rem; font-weight: 700; color: var(--color-forest);">Dashboard Activation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: Final Reassurance CTA and Footer -->
+    <section class="section section-muted" id="contact-final-cta">
+      <div class="container">
+        <div class="cta-banner-centered">
+          <h2>Have an Immediate Question?</h2>
+          <p>
+            Our dedicated team is ready to assist with any questions regarding service regions, key safe procedures, or visit schedules.
+          </p>
+          <div class="btn-group" style="justify-content: center;">
+            <a href="tel:+18005554663" class="btn btn-white">Call +1 (800) 555-HOME</a>
+            <a href="login.html" class="btn btn-outline-white">Client Portal Demo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+                <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand footer-brand-logo" style="margin-block-end: 1rem; color: #FFFFFF; text-decoration: none;">
+            <img src="assets/images/havenguard-shield-icon.png" alt="HavenGuard Shield Logo" class="brand-logo-shield" width="38" height="38">
+            <div class="brand-title-group">
+              <span class="brand-name" style="color: #FFFFFF;">HavenGuard</span>
+              <span class="brand-tagline" style="color: var(--color-sage);">Your Home. Our Watch.</span>
+            </div>
+          </a>
+          <p>
+            Premier vacation home watch and visual property care service for secondary residences, coastal villas, and luxury estates.
+          </p>
+          <div style="margin-block-start: 1.25rem; font-size: 0.88rem; color: var(--color-sage);">
+            Bonded &amp; Insured Care Specialists
+          </div>
+          <!-- Social Media Icons -->
+          <div class="footer-social-links" aria-label="HavenGuard Social Profiles">
+            <a href="https://instagram.com" class="social-icon-btn" aria-label="HavenGuard on Instagram" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://facebook.com" class="social-icon-btn" aria-label="HavenGuard on Facebook" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://linkedin.com" class="social-icon-btn" aria-label="HavenGuard on LinkedIn" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://twitter.com" class="social-icon-btn" aria-label="HavenGuard on X" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg>
+            </a>
+            <a href="https://youtube.com" class="social-icon-btn" aria-label="HavenGuard on YouTube" target="_blank" rel="noopener noreferrer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+            </a>
+          </div>
+        </div>
+
+        
+
+        <div>
+          <h4 class="footer-heading">Pages</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home 1 (Photography)</a></li>
+            <li><a href="home-2.html">Home 2 (Editorial)</a></li>
+            <li><a href="services.html">Services Scope</a></li>
+            <li><a href="about.html">About HavenGuard</a></li>
+            <li><a href="contact.html">Contact &amp; Enquiry</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Client Portal</h4>
+          <ul class="footer-links">
+            <li><a href="login.html">Homeowner Login</a></li>
+            <li><a href="dashboard.html">Visit Dashboard</a></li>
+            <li><a href="dashboard.html">Schedule Check</a></li>
+            <li><a href="dashboard.html">Photo Reports</a></li>
+            <li><a href="dashboard.html">Mail Tracking</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Concierge Desk</h4>
+          <ul class="footer-links" style="gap: 1rem;">
+            <li>
+              <div style="font-size: 0.82rem; color: var(--color-sage); text-transform: uppercase;">Direct Phone</div>
+              <strong style="color: #FFFFFF;">+1 (800) 555-HOME</strong>
+            </li>
+            <li>
+              <div style="font-size: 0.82rem; color: var(--color-sage); text-transform: uppercase;">Dispatch Email</div>
+              <strong style="color: #FFFFFF;">care@homewatchservice.com</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>&copy; 2026 HavenGuard Vacation Home Watch &amp; Property Check Service. All rights reserved.</div>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="about.html" style="color: inherit;">Standards of Care</a>
+          <a href="contact.html" style="color: inherit;">Emergency Escalation Protocol</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button type="button" class="back-to-top js-back-to-top" id="back-to-top-btn" aria-label="Back to top" title="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact.js"></script>
+</body>
+</html>
