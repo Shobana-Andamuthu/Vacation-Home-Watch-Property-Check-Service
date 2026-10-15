@@ -335,7 +335,7 @@
         });
 
         // Close sidebar on mobile/tablet after selection
-        if (window.innerWidth < 1024) {
+        if (window.innerWidth <= 1200) {
           closeSidebar();
         }
       });
@@ -354,7 +354,7 @@
         toggleBtn.setAttribute('aria-expanded', 'true');
         toggleBtn.setAttribute('aria-label', 'Close navigation sidebar');
       }
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth <= 1200) {
         document.body.style.overflow = 'hidden';
       }
     }
@@ -392,12 +392,6 @@
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
-        closeSidebar();
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      if (window.innerWidth >= 1024 && sidebar && sidebar.classList.contains('open')) {
         closeSidebar();
       }
     });
