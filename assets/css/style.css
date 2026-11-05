@@ -601,6 +601,29 @@ p  { font-size: clamp(0.95rem, 0.5vw + 0.8rem, 1.05rem); }
   flex-shrink: 0;
 }
 
+/* Ensure the theme button, RTL button, login button, and CTA button maintain the exact same height on desktop */
+@media (min-width: 1201px) {
+  .site-header .nav-actions .control-btn,
+  .site-header .nav-actions .dir-toggle-btn,
+  .site-header .nav-actions .nav-login-btn,
+  .site-header .nav-actions .nav-cta-btn,
+  .site-header #theme-toggle-btn,
+  .site-header #rtl-toggle-btn,
+  .site-header #nav-cta-btn,
+  .site-header #nav-login-btn {
+    height: 38px !important;
+    min-height: 38px !important;
+    max-height: 38px !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-block: 0 !important;
+    line-height: normal !important;
+    vertical-align: middle !important;
+  }
+}
+
 .control-btn {
   width: 38px;
   height: 38px;
@@ -1135,8 +1158,23 @@ p  { font-size: clamp(0.95rem, 0.5vw + 0.8rem, 1.05rem); }
 }
 
 .card-service .card-body {
-  text-align: center;
+  text-align: start;
 }
+
+.card-service .card-title {
+  min-height: 2.2rem;
+  margin-block-end: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.card-service .card-text {
+  min-height: 5.9rem;
+  line-height: 1.55;
+  margin-block-end: 1.5rem;
+}
+
+
 
 /* ==========================================================================
    Home 2: Structured Editorial Components
@@ -1951,6 +1989,11 @@ body.dashboard-page,
 body:has(.dashboard-wrapper) {
   padding-top: 64px !important;
   --header-height: 64px !important;
+  overflow-x: clip !important;
+}
+
+html:has(.dashboard-page) {
+  overflow-x: clip !important;
 }
 
 .site-header.dashboard-header {
@@ -1973,6 +2016,7 @@ body:has(.dashboard-wrapper) {
   padding: 0 !important;
   background-color: var(--bg-primary);
   align-items: stretch;
+  overflow: visible !important;
 }
 
 .dashboard-sidebar {
@@ -2004,6 +2048,7 @@ body:has(.dashboard-wrapper) {
     top: 64px !important;
     height: calc(100vh - 64px) !important;
     height: calc(100dvh - 64px) !important;
+    min-height: calc(100vh - 64px) !important;
     max-height: calc(100vh - 64px) !important;
     align-self: flex-start !important;
     width: 280px !important;
@@ -2034,7 +2079,7 @@ body:has(.dashboard-wrapper) {
     flex-direction: column !important;
     justify-content: space-between !important;
     box-sizing: border-box !important;
-    padding: 0.35rem 0.85rem 0.85rem 0.85rem !important;
+    padding: 0.85rem !important;
     margin: 0 !important;
     overflow-y: auto !important;
     overflow-x: hidden !important;
@@ -2290,16 +2335,16 @@ body:has(.dashboard-wrapper) {
   color: var(--text-accent);
 }
 
-/* 4. BOTTOM: Profile & Sign Out Footer (keela bottom la vei) */
+/* 4. BOTTOM: Profile & Sign Out Footer (pinned to bottom of sidebar) */
 .sidebar-footer-card {
   margin-top: auto !important;
   margin-block-end: 0 !important;
-  padding-block-start: 0.55rem !important;
+  padding-block-start: 0.75rem !important;
   padding-block-end: 0 !important;
   border-block-start: 1px solid var(--border-subtle);
   display: flex !important;
   flex-direction: column !important;
-  gap: 0.4rem !important;
+  gap: 0.45rem !important;
   flex-shrink: 0 !important;
   width: 100% !important;
 }
@@ -2392,7 +2437,7 @@ body:has(.dashboard-wrapper) {
 
 .dashboard-content {
   flex-grow: 1;
-  padding: 1.25rem clamp(1.25rem, 2.5vw, 2.5rem) 2.5rem clamp(1.25rem, 2.5vw, 2.5rem);
+  padding: 1.25rem clamp(1.25rem, 2.5vw, 2.5rem) 2rem clamp(1.25rem, 2.5vw, 2.5rem);
   background-color: var(--bg-primary);
   min-width: 0;
 }
@@ -2403,9 +2448,9 @@ body:has(.dashboard-wrapper) {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: 1rem;
   margin-top: 0 !important;
-  margin-block-end: 1.75rem;
+  margin-block-end: 1.25rem !important;
   width: 100%;
 }
 
@@ -2613,7 +2658,7 @@ body:has(.dashboard-wrapper) {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.25rem;
-  margin-block-end: 2.5rem;
+  margin-block-end: 1.25rem;
 }
 
 .stat-card {
@@ -2880,11 +2925,22 @@ body:has(.dashboard-wrapper) {
     display: none !important;
   }
 
-  .nav-login-btn,
-  .nav-cta-btn {
+  /* Public website navbar: move all controls inside the menu drawer, keep ONLY Hamburger icon in navbar */
+  .site-header:not(.dashboard-header) .nav-actions > *:not(.hamburger-btn):not(#mobile-menu-btn),
+  .site-header:not(.dashboard-header) .nav-actions .control-btn:not(.hamburger-btn),
+  .site-header:not(.dashboard-header) .nav-actions .js-theme-toggle,
+  .site-header:not(.dashboard-header) .nav-actions .dir-toggle-btn,
+  .site-header:not(.dashboard-header) .nav-actions .nav-login-btn,
+  .site-header:not(.dashboard-header) .nav-actions .nav-cta-btn,
+  .site-header:not(.dashboard-header) #theme-toggle-btn,
+  .site-header:not(.dashboard-header) #rtl-toggle-btn,
+  .site-header:not(.dashboard-header) #nav-login-btn,
+  .site-header:not(.dashboard-header) #nav-cta-btn {
     display: none !important;
   }
 
+  .site-header:not(.dashboard-header) .hamburger-btn,
+  .site-header:not(.dashboard-header) #mobile-menu-btn,
   .hamburger-btn {
     display: inline-flex !important;
   }
@@ -3300,18 +3356,10 @@ body:has(.dashboard-wrapper) {
     white-space: normal;
   }
 
-  .site-header:not(.dashboard-header) .control-btn, 
   .site-header:not(.dashboard-header) .hamburger-btn {
     width: 34px;
     height: 34px;
     font-size: 0.9rem;
-  }
-
-  .site-header:not(.dashboard-header) .dir-toggle-btn {
-    min-width: 52px;
-    height: 34px;
-    font-size: 0.72rem;
-    padding-inline: 0.35rem;
   }
 }
 
@@ -5261,5 +5309,239 @@ body:has(.dashboard-wrapper) {
     gap: 0.65rem !important;
   }
 }
+
+/* ==========================================================================
+   Contact Page: Interactive Map Section & Business Location
+   ========================================================================== */
+.contact-map-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 2rem;
+  align-items: stretch;
+  margin-top: 1.5rem;
+}
+
+.contact-location-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.location-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-forest);
+  background-color: rgba(66, 107, 88, 0.1);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  margin-block-end: 1rem;
+  align-self: flex-start;
+}
+
+[data-theme="dark"] .location-header-badge {
+  color: var(--text-accent);
+  background-color: rgba(111, 164, 138, 0.15);
+}
+
+.location-card-title {
+  font-size: 1.45rem;
+  margin-block-end: 0.65rem;
+  color: var(--text-primary);
+}
+
+.location-card-description {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-block-end: 1.5rem;
+}
+
+.location-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.location-detail-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.location-icon-wrap {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background-color: var(--bg-subtle);
+  color: var(--color-forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid var(--border-subtle);
+}
+
+[data-theme="dark"] .location-icon-wrap {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-accent);
+}
+
+.location-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  margin-block-end: 0.2rem;
+}
+
+.location-val {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.45;
+}
+
+.location-link {
+  color: var(--color-forest);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.location-link:hover {
+  text-decoration: underline;
+  color: var(--color-forest-hover);
+}
+
+[data-theme="dark"] .location-link {
+  color: var(--text-accent);
+}
+
+.location-actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: auto;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.contact-map-wrapper {
+  position: relative;
+  min-height: 440px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--card-shadow);
+  background-color: var(--bg-subtle);
+}
+
+.contact-map-iframe {
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  display: block;
+}
+
+.map-floating-badge {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  z-index: 2;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  padding: 0.45rem 0.95rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(8px);
+}
+
+.badge-dot-live {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2E7D32;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.3);
+}
+
+@media (max-width: 992px) {
+  .contact-map-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .contact-map-wrapper {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-location-card {
+    padding: 1.25rem 1rem !important;
+  }
+  .location-actions-group .btn {
+    width: 100%;
+  }
+  .contact-map-wrapper {
+    min-height: 320px;
+  }
+  .map-floating-badge {
+    top: 0.75rem;
+    inset-inline-start: 0.75rem;
+    font-size: 0.72rem;
+    padding: 0.35rem 0.65rem;
+  }
+}
+
+/* ==========================================================================
+   Schedule Visit - Requested Visit Date Calendar Icon Visibility in Dark Mode
+   ========================================================================== */
+#visit-date {
+  position: relative;
+  cursor: pointer;
+}
+
+#visit-date::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: opacity var(--transition-base), filter var(--transition-base);
+}
+
+[data-theme="dark"] #visit-date,
+[data-theme="dark"] input[type="date"] {
+  color-scheme: dark;
+}
+
+[data-theme="dark"] #visit-date::-webkit-calendar-picker-indicator,
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(1.25) drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+  cursor: pointer;
+  opacity: 0.95;
+}
+
+[data-theme="dark"] #visit-date::-webkit-calendar-picker-indicator:hover,
+[data-theme="dark"] input[type="date"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+  filter: invert(1) brightness(1.45) drop-shadow(0 0 4px rgba(74, 222, 128, 0.6));
+}
+
 
 
